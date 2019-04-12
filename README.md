@@ -2,7 +2,6 @@ eslint-plugin-es5
 =================
 
 [![CircleCI](https://circleci.com/gh/nkt/eslint-plugin-es5.svg?style=shield)](https://circleci.com/gh/nkt/eslint-plugin-es5)
-[![Cult Of Martians](http://cultofmartians.com/assets/badges/badge.svg)](http://cultofmartians.com/tasks/eslint-es5.html)
 
 ESLint plugin for ES5 users.
 
@@ -64,7 +63,7 @@ Available presets:
 List of supported rules
 -----------------------
 
-  - `es5/no-es6-methods` Forbid ES2015 [methods](http://babeljs.io/learn-es2015/#math--number--string--object-apis) for `Array` and `String`
+  - `es5/no-es6-methods` Forbid ES2015 [methods](http://babeljs.io/learn-es2015/#math--number--string--object-apis) for `Array` and `String`. You can disable them using options: `"es5/no-es6-methods": ["error", { "find": false }]`
   - `es5/no-es6-static-methods` Forbid ES2015 [static methods](http://babeljs.io/learn-es2015/#math--number--string--object-apis) for `Array`, `Math`, `Number`, and `Object`
   - `es5/no-arrow-functions`:wrench:: Forbid [arrow-functions](https://babeljs.io/learn-es2015/#ecmascript-2015-features-arrows-and-lexical-this).
   - `es5/no-binary-and-octal-literals`:wrench:: Forbid [binary and octal literals](https://babeljs.io/learn-es2015/#binary-and-octal-literals).

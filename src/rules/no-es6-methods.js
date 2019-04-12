@@ -23,14 +23,31 @@ module.exports = {
     docs: {
       description: 'Forbid methods added in ES6'
     },
-    schema: []
+    schema: [{
+      type: 'object',
+      properties: {
+        // array functions
+        find: { type: 'boolean' },
+        findIndex: { type: 'boolean' },
+        copyWithin: { type: 'boolean' },
+        values: { type: 'boolean' },
+        fill: { type: 'boolean' },
+        // string functions
+        startsWith: { type: 'boolean' },
+        endsWith: { type: 'boolean' },
+        includes: { type: 'boolean' },
+        repeat: { type: 'boolean' },
+      }
+    }]
   },
   create(context) {
     return {
       CallExpression(node) {
         if (node.callee && node.callee.property && !objectExceptions[node.callee.object.name]) {
+          const options = Object.assign(es6Functions, context.options[0]);
           const functionName = node.callee.property.name;
-          if (es6Functions[functionName]) {
+
+          if (options.hasOwnProperty(functionName) && options[functionName]) {
             context.report({
               node: node.callee.property,
               message: 'ES6 methods not allowed: ' + functionName
